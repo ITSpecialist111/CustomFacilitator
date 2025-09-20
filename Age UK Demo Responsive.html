@@ -61,9 +61,9 @@
         .map-image { width: 100%; height: 100%; object-fit: contain; }
     </style>
 </head>
-<body class="text-gray-200 h-screen">
+<body class="text-gray-200 h-screen overflow-hidden">
     <div class="flex h-full">
-        <!-- Teams Left Nav Rail (Hidden on mobile) -->
+        <!-- Teams Left Nav Rail -->
         <nav class="w-16 teams-left-rail-bg hidden md:flex flex-col items-center justify-between py-2 flex-shrink-0">
             <div class="space-y-2">
                 <button class="p-3 rounded teams-icon-hover"><i class="fas fa-bell"></i></button>
@@ -89,12 +89,13 @@
                 <div class="flex-1 max-w-lg mx-4 hidden sm:block">
                     <div class="relative">
                         <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                        <input type="text" placeholder="Search" class="w-full bg-[#292828] rounded py-1.5 pl-9 pr-3 focus:outline-none focus:ring-2 focus:ring-[#A6A6F6]">
+                        <input type="text" placeholder="Search (Ctrl+Alt+E)" class="w-full bg-[#292828] rounded py-1.5 pl-9 pr-3 focus:outline-none focus:ring-2 focus:ring-[#A6A6F6]">
                     </div>
                 </div>
                 <div class="flex items-center space-x-2 sm:space-x-4">
                     <button class="teams-icon-hover px-2 py-1 rounded hidden sm:block">Chat</button>
                     <button class="teams-icon-hover px-2 py-1 rounded hidden sm:block">People</button>
+                    <button class="teams-icon-hover px-2 py-1 rounded hidden md:block">Raise</button>
                     <button class="teams-icon-hover px-2 py-1 rounded hidden md:block">React</button>
                     <button class="teams-icon-hover px-2 py-1 rounded hidden md:block">Apps</button>
                     <div class="w-px h-6 bg-gray-600 hidden sm:block"></div>
@@ -107,30 +108,31 @@
             <!-- Main Content Area (Stack on mobile, side-by-side on desktop) -->
             <div class="flex flex-col md:flex-row flex-1 min-h-0">
                 <!-- Meeting/Video Call Area -->
-                <main class="flex-1 teams-bg p-4 flex flex-col gap-4 overflow-y-auto">
-                    <!-- Participant Videos -->
-                    <div class="bg-black rounded-lg shadow-lg relative flex-1 min-h-[50%]">
-                        <img src="https://raw.githubusercontent.com/ITSpecialist111/CustomFacilitator/main/Daughter.png" alt="Main Speaker" class="object-cover w-full h-full rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/334155/E2E8F0?text=Participant';">
-                        <span class="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 bg-black bg-opacity-50 px-2 sm:px-3 py-1 rounded-md text-sm sm:text-lg font-semibold">Sarah (Daughter)</span>
-                         <div id="emotion-indicator" class="absolute top-2 right-2 sm:top-4 sm:right-4 bg-red-600 px-3 py-1 rounded-full text-xs font-semibold">
-                            <i class="fas fa-exclamation-triangle mr-1"></i>Distressed
+                <main class="flex-1 teams-bg p-4 flex flex-col items-center justify-center relative overflow-y-auto">
+                    <div class="grid grid-cols-1 grid-rows-2 gap-4 w-full h-full max-w-4xl mx-auto">
+                        <div class="bg-black rounded-lg shadow-lg flex flex-col items-center justify-center relative row-span-1">
+                            <img src="https://raw.githubusercontent.com/ITSpecialist111/CustomFacilitator/main/Daughter.png" alt="Main Speaker" class="object-cover w-full h-full rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/334155/E2E8F0?text=Participant';">
+                            <span class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-md text-lg font-semibold">Sarah (Daughter) - Active Speaker</span>
+                             <div id="emotion-indicator" class="absolute top-4 right-4 bg-red-600 px-3 py-1 rounded-full text-xs font-semibold">
+                                <i class="fas fa-exclamation-triangle mr-1"></i>Distressed
+                            </div>
                         </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4 flex-1 min-h-[33%]">
-                         <div class="bg-black rounded-lg shadow-lg flex flex-col items-center justify-center relative">
-                             <img src="https://raw.githubusercontent.com/ITSpecialist111/CustomFacilitator/main/Advisor.png" alt="Advisor" class="object-cover w-full h-full rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/400x225/1E3A8A/FFFFFF?text=You';">
-                            <span class="absolute bottom-2 left-2 bg-black bg-opacity-50 px-2 py-1 rounded-md text-xs sm:text-sm">You (Advisor)</span>
-                        </div>
-                         <div class="bg-black rounded-lg shadow-lg flex flex-col items-center justify-center relative">
-                            <div class="w-full h-full bg-gray-900 flex items-center justify-center rounded-lg relative">
-                                <div id="agent-status" class="text-center">
-                                    <img src="https://raw.githubusercontent.com/ITSpecialist111/CustomFacilitator/main/AGELogo.png?raw=true" alt="Ally Aura Logo" class="w-16 h-8 sm:w-20 sm:h-10 object-contain pulse-indicator">
-                                    <div class="mt-2 text-xs sm:text-sm">
-                                        <div id="agent-activity" class="text-indigo-400">Listening...</div>
+                        <div class="grid grid-cols-2 gap-4 row-span-1">
+                             <div class="bg-black rounded-lg shadow-lg flex flex-col items-center justify-center relative">
+                                 <img src="https://raw.githubusercontent.com/ITSpecialist111/CustomFacilitator/main/Advisor.png" alt="Advisor" class="object-cover w-full h-full rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/400x225/1E3A8A/FFFFFF?text=You';">
+                                <span class="absolute bottom-2 left-2 bg-black bg-opacity-50 px-2 py-1 rounded-md">You (Age UK Advisor)</span>
+                            </div>
+                             <div class="bg-black rounded-lg shadow-lg flex flex-col items-center justify-center relative">
+                                <div class="w-full h-full bg-gray-900 flex items-center justify-center rounded-lg relative">
+                                    <div id="agent-status" class="text-center">
+                                        <img src="https://raw.githubusercontent.com/ITSpecialist111/CustomFacilitator/main/AGELogo.png?raw=true" alt="Ally Aura Logo" class="w-20 h-10 object-contain pulse-indicator">
+                                        <div class="mt-2 text-sm">
+                                            <div id="agent-activity" class="text-indigo-400">Listening...</div>
+                                        </div>
                                     </div>
                                 </div>
+                                <span class="absolute bottom-2 left-2 bg-black bg-opacity-50 px-2 py-1 rounded-md">Ally Aura (Active)</span>
                             </div>
-                            <span class="absolute bottom-2 left-2 bg-black bg-opacity-50 px-2 py-1 rounded-md text-xs sm:text-sm">Ally Aura</span>
                         </div>
                     </div>
                 </main>
@@ -154,7 +156,7 @@
                     </div>
 
                     <!-- Live Insights Tab -->
-                    <div id="tab-live" class="tab-content space-y-3">
+                    <div id="tab-live" class="tab-content flex-1 flex flex-col space-y-3 min-h-0">
                         <div class="bg-gray-800 p-3 rounded-lg">
                             <h3 class="font-semibold mb-2 text-sm text-amber-400 flex items-center"><i class="fas fa-lightbulb mr-2"></i>Live Insights</h3>
                             <div id="insights" class="text-xs space-y-2"></div>
@@ -167,9 +169,9 @@
                             <h3 class="font-semibold mb-2 text-sm text-green-400 flex items-center"><i class="fas fa-book-open mr-2"></i>The Bible - Knowledge Base</h3>
                             <div id="knowledge-base" class="text-xs space-y-2"></div>
                         </div>
-                        <div class="bg-gray-800 p-3 rounded-lg">
-                            <h3 class="font-semibold mb-2 text-sm">Live Transcript</h3>
-                            <div id="transcript" class="text-xs space-y-2 max-h-48 overflow-y-auto"></div>
+                        <div class="bg-gray-800 p-3 rounded-lg flex-1 flex flex-col min-h-0">
+                            <h3 class="font-semibold mb-2 text-sm flex-shrink-0">Live Transcript</h3>
+                            <div id="transcript" class="text-xs space-y-2 overflow-y-auto"></div>
                         </div>
                     </div>
 
@@ -379,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             speaker: 'Advisor',
-            text: "Sarah, it sounds like you're doing an incredible job, but it's important we look after you too. Let me create a clear action plan so you don't have to navigate this alone. I'll also get you connected with our carers' support services.",
+            text: "Sarah, it's a lot to take on, and it's completely understandable that you're feeling stressed. Let me create a clear action plan so you don't have to navigate this alone. I'll also get you connected with our carers' support services.",
             sentiment: 'positive',
             emotion: 'Supportive',
             agentActions: {
