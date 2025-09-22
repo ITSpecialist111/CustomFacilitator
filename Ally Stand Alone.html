@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age UK Ally</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #d1d5db;
+        }
+        .glass-panel {
+            background: rgba(31, 41, 55, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+        }
+        .glowing-dot {
+            box-shadow: 0 0 5px #f87171, 0 0 10px #f87171, 0 0 15px #f87171;
+        }
+        .ai-insight::before {
+            content: '✨';
+            margin-right: 0.5rem;
+        }
+         /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+    </style>
+</head>
+<body class="p-4 lg:p-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 h-[calc(100vh-2rem)]">
+
+        <!-- Header -->
+        <header class="lg:col-span-12 glass-panel p-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-indigo-600 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M12 22a6 6 0 0 0 6-6V9a6 6 0 0 0-12 0v7a6 6 0 0 0 6 6Z"/><path d="M12 15a3 3 0 0 0 3-3V9a3 3 0 0 0-6 0v3a3 3 0 0 0 3 3Z"/><path d="M12 18v2"/><path d="M8 22h8"/></svg>
+                </div>
+                <h1 class="text-xl font-bold text-white">Age UK <span class="text-indigo-400 font-medium">| Ally</span></h1>
+            </div>
+            <div class="flex items-center gap-6">
+                 <div class="text-right">
+                    <p class="text-sm text-gray-400">Age UK Advice Centre, Lydney</p>
+                    <p id="current-time" class="text-white font-medium">11:51 AM</p>
+                </div>
+                <div id="recording-indicator" class="flex items-center gap-2 bg-red-600/20 border border-red-500 text-red-400 px-3 py-1.5 rounded-lg">
+                    <div class="w-3 h-3 bg-red-500 rounded-full glowing-dot"></div>
+                    <span class="font-semibold">REC</span>
+                    <span id="meeting-timer" class="font-mono">00:00:00</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="lg:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
+            <!-- Live Transcript -->
+            <div class="glass-panel p-6 flex flex-col h-full md:col-span-2">
+                <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                     <i data-lucide="scroll-text"></i> Live Meeting Transcript
+                </h2>
+                <div id="transcript-feed" class="flex-grow overflow-y-auto pr-2 space-y-4">
+                    <!-- Transcript items will be injected here -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="lg:col-span-6 glass-panel p-6 flex flex-col gap-6 h-full">
+            <!-- AI Insights -->
+            <div class="flex-1 flex flex-col">
+                <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                   <i data-lucide="sparkles"></i> AI Insights & Suggestions
+                </h2>
+                <div id="insights-panel" class="flex-grow overflow-y-auto pr-2 space-y-3">
+                    <!-- AI insights will be injected here -->
+                </div>
+            </div>
+            <!-- Knowledge & Actions -->
+            <div class="flex-1 flex flex-col">
+                 <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <i data-lucide="library"></i> Knowledge & Actions
+                </h2>
+                <div id="knowledge-panel" class="flex-grow overflow-y-auto pr-2 space-y-3">
+                     <!-- Knowledge items will be injected here -->
+                </div>
+            </div>
+        </aside>
+
+
+        <!-- Footer -->
+        <footer class="lg:col-span-12 glass-panel p-4 flex justify-between items-center">
+            <div>
+                 <p class="text-sm font-medium"><span class="text-gray-400">Session with:</span> <span class="text-white">Daughter (re: Elderly Parent)</span></p>
+                 <p class="text-sm"><span class="text-gray-400">Topic:</span> <span class="text-white">Housing & Benefits Enquiry</span></p>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500/30 px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all">
+                     <i data-lucide="flag"></i> Mark Key Moment
+                </button>
+                <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-bold flex items-center gap-2 transition-all">
+                    <i data-lucide="square"></i> End Session
+                </button>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const transcriptFeed = document.getElementById('transcript-feed');
+            const insightsPanel = document.getElementById('insights-panel');
+            const knowledgePanel = document.getElementById('knowledge-panel');
+            const meetingTimer = document.getElementById('meeting-timer');
+            const currentTimeEl = document.getElementById('current-time');
+
+            let seconds = 0;
+            let insightCounter = 0;
+
+            const mockTranscript = [
+                { speaker: 'Advisor', text: "Thank you for coming in. Please, take a seat. How can I help you today?" },
+                { speaker: 'Daughter', text: "I'm just so worried about my mum. She received an eviction notice and I'm so frustrated with all the paperwork, I don't know where to start." },
+                { speaker: 'Advisor', text: "I understand this must be very distressing. We can go through it step-by-step. Can you tell me a bit more about the housing situation?" },
+                { speaker: 'Daughter', text: "She's been in her flat for 20 years. The landlord is selling up. She has very little savings and her benefits barely cover the rent as it is." },
+                { speaker: 'Advisor', text: "Okay. Let's look at the benefits first. Is she receiving Attendance Allowance?" },
+                { speaker: 'Daughter', text: "I don't think so. What's that? Honestly, I'm worried she doesn't have much to eat by the end of the week." },
+                { speaker: 'Advisor', text: "Right, we absolutely need to address that immediately. Let's check her eligibility for a few things." },
+            ];
+
+            const mockInsights = [
+                 { type: 'alert', text: "Sentiment: Distressed, Frustrated. Client is at high risk of being overwhelmed. Prioritise building trust and reassurance." },
+                 { type: 'suggestion', text: "Prompt: Ask if the parent has had a recent needs assessment from social services. This can unlock further support." },
+                 { type: 'safeguarding', text: "Safeguarding Alert: Mention of 'doesn't have much to eat' requires immediate action. Refer to Food Poverty Pathway in 'the Bible'." },
+                 { type: 'suggestion', text: "Suggest a follow-up appointment for a full benefits check to maximise income."}
+            ];
+
+            const mockKnowledge = [
+                { title: "Factsheet: Responding to a Section 21 Eviction Notice", source: "The Bible", snippet: "Check for validity of the notice: correct dates, prescribed information provided, and deposit protection scheme details..."},
+                { title: "Guide: Attendance Allowance Eligibility", source: "The Bible", snippet: "Eligibility is not means-tested and depends on the level of care needed due to illness or disability..."},
+                { title: "Learned Knowledge: Gloucester Council Housing Support", source: "Learned Knowledge", snippet: "Recent cases show that the council's discretionary housing payment has been successful for short-term rent shortfalls for clients in similar situations."}
+            ];
+
+            let transcriptIndex = 0;
+            function addTranscript() {
+                if (transcriptIndex < mockTranscript.length) {
+                    const item = mockTranscript[transcriptIndex];
+                    const div = document.createElement('div');
+                    const speakerClass = item.speaker === 'Advisor' ? 'bg-indigo-600/30 self-end text-right' : 'bg-gray-700/50 self-start';
+                    const nameClass = item.speaker === 'Advisor' ? 'text-indigo-300' : 'text-gray-300';
+                    div.className = `p-3 rounded-lg max-w-[85%] ${speakerClass}`;
+                    div.innerHTML = `
+                        <p class="font-bold text-sm ${nameClass}">${item.speaker}</p>
+                        <p class="text-white">${item.text}</p>
+                    `;
+                    transcriptFeed.appendChild(div);
+                    transcriptFeed.scrollTop = transcriptFeed.scrollHeight;
+
+                    // Trigger insights and knowledge based on conversation
+                    if(item.text.includes("frustrated")) {
+                        addInsight(mockInsights[0]);
+                    }
+                    if(item.text.includes("eviction notice")) {
+                        addKnowledge(mockKnowledge[0]);
+                        addInsight(mockInsights[1]);
+                    }
+                     if(item.text.includes("Attendance Allowance")) {
+                        addKnowledge(mockKnowledge[1]);
+                        addKnowledge(mockKnowledge[2]);
+                    }
+                    if(item.text.includes("much to eat")) {
+                        addInsight(mockInsights[2]);
+                        addInsight(mockInsights[3]);
+                    }
+
+
+                    transcriptIndex++;
+                }
+            }
+
+            function addInsight(insight) {
+                 insightCounter++;
+                 const div = document.createElement('div');
+                 let colorClass = 'border-l-4 border-blue-500 bg-blue-500/20';
+                 if (insight.type === 'alert') {
+                    colorClass = 'border-l-4 border-yellow-500 bg-yellow-500/20';
+                 } else if (insight.type === 'safeguarding') {
+                    colorClass = 'border-l-4 border-red-500 bg-red-500/20';
+                 }
+
+                 div.className = `${colorClass} p-3 rounded-r-lg ai-insight opacity-0 transform translate-y-2 transition-all duration-500`;
+                 div.innerHTML = `<p class="text-sm text-gray-200">${insight.text}</p>`;
+                 insightsPanel.appendChild(div);
+                 setTimeout(() => {
+                     div.classList.remove('opacity-0', 'translate-y-2');
+                 }, 100);
+                 insightsPanel.scrollTop = insightsPanel.scrollHeight;
+            }
+
+            function addKnowledge(item) {
+                const div = document.createElement('div');
+                div.className = 'bg-gray-800/60 p-3 rounded-lg hover:bg-gray-700/80 cursor-pointer transition-colors opacity-0 transform translate-y-2 transition-all duration-500 delay-200';
+                div.innerHTML = `
+                    <p class="font-semibold text-white text-sm">${item.title}</p>
+                    <p class="text-xs text-gray-400 mt-1 italic">Source: ${item.source}</p>
+                    <p class="text-sm text-gray-300 mt-2">${item.snippet}</p>
+                `;
+                knowledgePanel.appendChild(div);
+                setTimeout(() => {
+                    div.classList.remove('opacity-0', 'translate-y-2');
+                }, 100);
+            }
+
+            // Timer logic
+            setInterval(() => {
+                seconds++;
+                const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+                const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+                const s = String(seconds % 60).padStart(2, '0');
+                meetingTimer.textContent = `${h}:${m}:${s}`;
+            }, 1000);
+
+            // Time update
+            function updateTime() {
+                const now = new Date();
+                currentTimeEl.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            }
+            updateTime();
+            setInterval(updateTime, 1000 * 30);
+
+
+            // Simulate conversation flow
+            addTranscript(); // First message
+            setInterval(addTranscript, 6000);
+        });
+    </script>
+</body>
+</html>
+
+
+
